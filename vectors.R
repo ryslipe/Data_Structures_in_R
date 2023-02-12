@@ -4,15 +4,37 @@ seq1 <- 1:15
 
 # Create a sequence from 1-15 with an increment of .1
 seq_increment <- seq(1, 15, .1)
+# We can also do this 
+(another_seq_increment <- seq(1, 15, by = .1))
 
 # Demonstrate how missing data is represented
 vec1 <- c(0, NA, 1, 2)
 is.na(vec1) # TRUE tells us that index in NA, FALSE tells us it isn't
 anyNA(vec1)  # TRUE tells us that a value is NA within the vector
 
-# Coercion 
-coer_vec <- c("xx", "beta", "p"(2.5, "g"))
+# Coercion - implicit - will always be character class if character is involved.
+imp_coer_vec_a <- c("xx", "beta", c(2.5, "g"))
+typeof(imp_coer_vec_a)
 
+
+imp_coer_vec_b <- c("xx", "beta", c(TRUE, 4))
+typeof(imp_coer_vec_b)
+
+imp_coer_vec_c <- c("xx", "beta", c("g", TRUE))
+typeof(imp_coer_vec_c)
+
+# Coercion - explicit
+exp_coer <- c("77", "88","99")
+class(exp_coer)
+new_exp_coer <- as.integer(exp_coer)
+class(new_exp_coer) # This now shows the characters as integers
+
+log_coer <- c("TRUE", "FALSE")
+new_log_coer <- as.logical(log_coer)
+class(new_log_coer) # Starts as character but we make it logical. 
+
+num_coer <- c(T, F, F)
+(new_num_coer <- as.numeric(num_coer)) # T becomes 1 F becomes False. 
 
 
 # Matrices
@@ -30,8 +52,7 @@ new_mat <- matrix(vec_to_mat, nrow = 5, ncol= 8)
 
 
 # Arrays
- 
-top_ten <- c("Trial of the Chicago 7",
+ top_ten <- c("Trial of the Chicago 7",
               "Promising Young Woman",
               "Tenet",
               "Nomadland",
@@ -53,7 +74,7 @@ type_of_movie <- c("Drama", "Crime", "Action", "Drama", "Drama", "Comedy", "Dram
 # We can set row names to the movies
 rownames(mat) <- top_ten
 colnames(mat) <- c("Rank", "Genre")
-# This is the metascore rankings
+# This is the metascore rankings and genre
 rank2 <- c(76, 73, 69, 91, 72, 67, 83, 87, 79, 60)
 # This second matrix will be the second dimension
 (mat2 <- cbind(rank2, type_of_movie))
