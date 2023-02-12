@@ -41,14 +41,21 @@ top_ten <- c("Trial of the Chicago 7",
               "Ma Rainey's Black Bottom",
               "Mank",
               "Birds of Prey")
+# This is IMDb rank
 rank1 <- c(7.7, 7.5, 7.3, 7.3, 7.1, 7.1, 7.1, 6.9, 6.8, 6)
+
+# This info will go in both dimensions
 type_of_movie <- c("Drama", "Crime", "Action", "Drama", "Drama", "Comedy", "Drama", 
                    "Drama", "Biogrophy", "Action")
+
+# Now we create a matrix for IMDb rank and the genre
 (mat <- cbind(rank1, type_of_movie))
+# We can set row names to the movies
 rownames(mat) <- top_ten
 colnames(mat) <- c("Rank", "Genre")
-
+# This is the metascore rankings
 rank2 <- c(76, 73, 69, 91, 72, 67, 83, 87, 79, 60)
+# This second matrix will be the second dimension
 (mat2 <- cbind(rank2, type_of_movie))
 
 # Creating the array
@@ -84,3 +91,14 @@ car_list
 # Create names for the list
 names(car_list) <- c("Make", "Model", "Year", "MPG")
 car_list
+car_list[1]
+car_list[[1]]
+car_list$Model
+
+
+# DATA FRAME
+id <- letters[1:26]
+x <- 1:26
+y <- 27:52
+df <- data.frame(letters, x,y)
+is.data.frame(df)
